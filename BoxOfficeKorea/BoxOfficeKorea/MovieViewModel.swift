@@ -12,6 +12,7 @@ class MovieViewModel: ObservableObject {
     
     @Published var dailyMovies: [MovieModel] = []
     @Published var weeklyMoviews: [MovieModel] = []
+    var today = Date()
     var cancellables = Set<AnyCancellable>()
     init() {
         getDailyBoxOffice()
@@ -19,7 +20,12 @@ class MovieViewModel: ObservableObject {
     
     func getDailyBoxOffice() {
         self.weeklyMoviews.removeAll()
-        guard let url = URL(string: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=\(MOVIE_API_KEY)&targetDt=20231205") else { return }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd"
+        dateFormatter.locale = .current
+        let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: today)!
+        let targetDate = dateFormatter.string(from: yesterday)
+        guard let url = URL(string: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=\(MOVIE_API_KEY)&targetDt=\(targetDate)") else { return }
         URLSession.shared.dataTaskPublisher(for: url)
             .subscribe(on: DispatchQueue.global(qos: .background))
             .receive(on: DispatchQueue.main)

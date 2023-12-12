@@ -59,14 +59,44 @@ struct ContentView: View {
                         Spacer()
                     }
                 }
+                
                 List {
                     Section {
                         if !viewModel.dailyMovies.isEmpty {
                             ForEach(viewModel.dailyMovies, id: \.movieCd) { dailyMovie in
                                 VStack(alignment: .leading, spacing: 10, content: {
                                     HStack{
-                                        Text(dailyMovie.movieNm)
-                                        Text(dailyMovie.showCnt)
+                                        VStack(alignment: .leading, spacing: 10, content: {
+                                            HStack(alignment: .top, content: {
+                                                Text("영화 제목 : \(dailyMovie.movieNm)")
+                                                if Int(dailyMovie.rankInten)! >= 0 {
+                                                    Image(systemName: "arrowtriangle.up.fill")
+                                                        .foregroundStyle(.red)
+                                                    Text("\(dailyMovie.rankInten)")
+                                                } else {
+                                                    Image(systemName: "arrowtriangle.down.fill")
+                                                        .foregroundStyle(.blue)
+                                                    Text("\(dailyMovie.rankInten)")
+                                                }
+                                                
+                                            })
+                                            HStack {
+                                                Text("관람객 수 : \(dailyMovie.audiCnt)")
+                                                if Int(dailyMovie.audiInten)! >= 0 {
+                                                    Text("(+\(dailyMovie.audiInten))")
+                                                } else {
+                                                    Text("(\(dailyMovie.audiInten))")
+                                                }
+                                                
+                                            }
+                                            
+                                        })
+                                        
+                                        Spacer()
+                                        if dailyMovie.rankOldAndNew == "NEW" {
+                                            Text("NEW")
+                                                .foregroundStyle(.green)
+                                        }
                                     }
                                 })
                                 .frame(maxWidth: .infinity, alignment: .leading)
