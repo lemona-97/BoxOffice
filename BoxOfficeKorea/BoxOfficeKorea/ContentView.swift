@@ -67,11 +67,12 @@ struct ContentView: View {
                                 VStack(alignment: .leading, spacing: 10, content: {
                                     HStack{
                                         VStack(alignment: .leading, spacing: 10, content: {
-                                            HStack(alignment: .top, content: {
+                                            HStack(alignment: .center, content: {
                                                 Text("영화 제목 : \(dailyMovie.movieNm)")
                                                 if Int(dailyMovie.rankInten)! >= 0 {
                                                     Image(systemName: "arrowtriangle.up.fill")
                                                         .foregroundStyle(.red)
+                                                        .frame(width: 10, height: 10)
                                                     Text("\(dailyMovie.rankInten)")
                                                 } else {
                                                     Image(systemName: "arrowtriangle.down.fill")
@@ -82,10 +83,13 @@ struct ContentView: View {
                                             })
                                             HStack {
                                                 Text("관람객 수 : \(dailyMovie.audiCnt)")
+                                                    .font(.system(size: 15))
                                                 if Int(dailyMovie.audiInten)! >= 0 {
-                                                    Text("(+\(dailyMovie.audiInten))")
+                                                    Text("(전일대비 +\(dailyMovie.audiInten))")
+                                                        .font(.system(size: 12))
                                                 } else {
-                                                    Text("(\(dailyMovie.audiInten))")
+                                                    Text("(전일대비 \(dailyMovie.audiInten))")
+                                                        .font(.system(size: 12))
                                                 }
                                                 
                                             }
@@ -102,12 +106,51 @@ struct ContentView: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding()
                             }
-                        } else if !viewModel.weeklyMoviews.isEmpty {
-                            ForEach(viewModel.weeklyMoviews, id: \.movieCd) { weeklyMovie in
+                        } else if !viewModel.weeklyMovies.isEmpty {
+                            ForEach(viewModel.weeklyMovies, id: \.movieCd) { weeklyMovie in
                                 VStack(alignment: .leading, spacing: 10, content: {
                                     HStack{
-                                        Text(weeklyMovie.movieNm)
-                                        Text(weeklyMovie.showCnt)
+                                        VStack(alignment: .leading, spacing: 10, content: {
+                                            HStack(alignment: .center, content: {
+                                                Text("영화 제목 : \(weeklyMovie.movieNm)")
+                                                if Int(weeklyMovie.rankInten)! >= 0 {
+                                                    Image(systemName: "arrowtriangle.up.fill")
+                                                        .foregroundStyle(.red)
+                                                        .frame(width: 10, height: 10)
+                                                    Text("\(weeklyMovie.rankInten)")
+                                                } else {
+                                                    Image(systemName: "arrowtriangle.down.fill")
+                                                        .foregroundStyle(.blue)
+                                                    Text("\(weeklyMovie.rankInten)")
+                                                }
+                                                
+                                            })
+                                            HStack {
+                                                Text("관람객 수 : \(weeklyMovie.audiCnt)")
+                                                    .font(.system(size: 15))
+                                                if Int(weeklyMovie.audiInten)! >= 0 {
+                                                    Text("(전주대비 +\(weeklyMovie.audiInten))")
+                                                        .font(.system(size: 12))
+                                                } else {
+                                                    Text("(전주대비 \(weeklyMovie.audiInten))")
+                                                        .font(.system(size: 12))
+                                                }
+                                                
+                                            }
+                                            
+                                        })
+                                        
+                                        Spacer()
+                                        if weeklyMovie.rankOldAndNew == "NEW" {
+                                            ZStack {
+                                                RoundedRectangle(cornerRadius: 8)
+                                                    .stroke(.cyan, lineWidth: 1)
+                                                    .frame(width: 50, height: 30)
+                                                    .foregroundStyle(.clear)
+                                                Text("NEW")
+                                                    .foregroundStyle(.green)
+                                            }
+                                        }
                                     }
                                 })
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -125,8 +168,6 @@ struct ContentView: View {
                 Spacer()
             }
         }
-        
-        
     }
 }
 
