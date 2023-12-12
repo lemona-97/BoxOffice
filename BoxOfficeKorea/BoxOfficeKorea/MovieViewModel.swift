@@ -55,13 +55,14 @@ class MovieViewModel: ObservableObject {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMdd"
         dateFormatter.locale = .current
-        let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: today)!
+        let yesterday = Calendar.current.date(byAdding: .day, value: -7, to: today)!
         let targetDate = dateFormatter.string(from: yesterday)
-        guard let url = URL(string: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json?key=\(MOVIE_API_KEY)&weekGb=0targetDt=\(targetDate)") else { return }
+        guard let url = URL(string: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json?key=\(MOVIE_API_KEY)&weekGb=0&targetDt=\(targetDate)") else { return }
         URLSession.shared.dataTaskPublisher(for: url)
             .subscribe(on: DispatchQueue.global(qos: .background))
             .receive(on: DispatchQueue.main)
             .tryMap { data, response -> Data in
+                print(data)
                 guard
                     let response = response as? HTTPURLResponse,
                     response.statusCode >= 200 && response.statusCode < 300 else {
@@ -98,7 +99,6 @@ class MovieViewModel: ObservableObject {
                     response.statusCode >= 200 && response.statusCode < 300 else {
                     throw URLError(.badServerResponse)
                 }
-                
                 return data
             }
             .decode(type: WeeklyMovie.self, decoder: JSONDecoder())
