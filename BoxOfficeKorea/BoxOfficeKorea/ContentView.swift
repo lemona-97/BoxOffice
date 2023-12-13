@@ -16,7 +16,7 @@ struct ContentView: View {
         ZStack {
             Color.white
                 .ignoresSafeArea()
-            VStack (spacing: 10){
+            VStack (spacing: 20){
                 Text("한국 Box Office")
                     .foregroundStyle(.black)
                     .padding(5)
@@ -59,127 +59,148 @@ struct ContentView: View {
                         Spacer()
                     }
                 }
-                
                 List {
-                    
                     if !viewModel.dailyMovies.isEmpty {
                         ForEach(viewModel.dailyMovies, id: \.movieCd) { dailyMovie in
                             ZStack {
                                 Color.white
-                                VStack(alignment: .leading, spacing: 10, content: {
-                                    HStack{
-                                        VStack(alignment: .leading, spacing: 10, content: {
-                                            HStack(alignment: .center, content: {
-                                                Text("영화 제목 : \(dailyMovie.movieNm)")
-                                                    .foregroundStyle(.black)
-                                                if Int(dailyMovie.rankInten)! >= 0 {
-                                                    Image(systemName: "arrowtriangle.up.fill")
-                                                        .foregroundStyle(.red)
-                                                        .frame(width: 10, height: 10)
-                                                    Text("\(dailyMovie.rankInten)")
-                                                        .foregroundStyle(.black)
-                                                } else {
-                                                    Image(systemName: "arrowtriangle.down.fill")
-                                                        .foregroundStyle(.blue)
-                                                    Text("\(dailyMovie.rankInten)")
-                                                        .foregroundStyle(.black)
-                                                }
-                                                
-                                            })
-                                            HStack {
-                                                Text("관람객 수 : \(dailyMovie.audiCnt)")
-                                                    .font(.system(size: 15))
-                                                    .foregroundStyle(.black)
-                                                if Int(dailyMovie.audiInten)! >= 0 {
-                                                    Text("(전일 대비 +\(dailyMovie.audiInten))")
-                                                        .font(.system(size: 12))
-                                                        .foregroundStyle(.black)
-                                                } else {
-                                                    Text("(전일 대비 \(dailyMovie.audiInten))")
-                                                        .font(.system(size: 12))
-                                                        .foregroundStyle(.black)
-                                                }
-                                                
-                                            }
-                                            
-                                        })
-                                        
-                                        Spacer()
-                                        if dailyMovie.rankOldAndNew == "NEW" {
-                                            Text("NEW")
-                                                .foregroundStyle(.green)
-                                        }
+                                
+                                HStack {
+                                    Text(dailyMovie.rank)
+                                        .foregroundStyle(.black)
+                                        .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 0))
+                                    if Int(dailyMovie.rankInten)! >= 0 {
+                                        Image(systemName: "arrowtriangle.up.fill")
+                                            .foregroundStyle(.red)
+                                            .frame(width: 10, height: 10)
+                                        Text("\(dailyMovie.rankInten)")
+                                            .foregroundStyle(.black)
+                                    } else {
+                                        Image(systemName: "arrowtriangle.down.fill")
+                                            .foregroundStyle(.blue)
+                                        Text("\(dailyMovie.rankInten)")
+                                            .foregroundStyle(.black)
                                     }
-                                })
-                                .frame(maxWidth: .infinity, alignment: .leading)
+                                    VStack(alignment: .leading, spacing: 10, content: {
+                                        HStack{
+                                            VStack(alignment: .leading, spacing: 20, content: {
+                                                HStack(alignment: .center, content: {
+                                                    Text("영화 제목 : \(dailyMovie.movieNm)")
+                                                        .foregroundStyle(.black)
+                                                    
+                                                })
+                                                
+                                                    Text("관람객 수 : \(dailyMovie.audiCnt)")
+                                                        .font(.system(size: 15))
+                                                        .foregroundStyle(.black)
+                                                    if Int(dailyMovie.audiInten)! >= 0 {
+                                                        Text("(전일 대비 +\(dailyMovie.audiInten))")
+                                                            .font(.system(size: 12))
+                                                            .foregroundStyle(.black)
+                                                    } else {
+                                                        Text("(전일 대비 \(dailyMovie.audiInten))")
+                                                            .font(.system(size: 12))
+                                                            .foregroundStyle(.black)
+                                                    }
+                                                
+                                                
+                                                
+                                            }).padding()
+                                            
+                                            Spacer()
+                                            if dailyMovie.rankOldAndNew == "NEW" {
+                                                ZStack {
+                                                    RoundedRectangle(cornerRadius: 8)
+                                                        .stroke(.cyan, lineWidth: 2)
+                                                        .frame(width: 50, height: 30)
+                                                        .foregroundStyle(.clear)
+                                                    Text("NEW")
+                                                        .foregroundStyle(.green)
+                                                }.padding(10)
+                                            }
+                                        }
+                                    })
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                }
+                                
                                 
                             }
                         }
                         .ignoresSafeArea()
                     } else if !viewModel.weeklyMovies.isEmpty {
                         ForEach(viewModel.weeklyMovies, id: \.movieCd) { weeklyMovie in
-                            VStack(alignment: .leading, spacing: 10, content: {
-                                HStack{
-                                    VStack(alignment: .leading, spacing: 10, content: {
-                                        HStack(alignment: .center, content: {
-                                            Text("영화 제목 : \(weeklyMovie.movieNm)")
-                                            if Int(weeklyMovie.rankInten)! >= 0 {
-                                                Image(systemName: "arrowtriangle.up.fill")
-                                                    .foregroundStyle(.red)
-                                                    .frame(width: 10, height: 10)
-                                                Text("\(weeklyMovie.rankInten)")
-                                            } else {
-                                                Image(systemName: "arrowtriangle.down.fill")
-                                                    .foregroundStyle(.blue)
-                                                Text("\(weeklyMovie.rankInten)")
-                                            }
-                                            
-                                        })
-                                        HStack {
-                                            Text("관람객 수 : \(weeklyMovie.audiCnt)")
-                                                .font(.system(size: 15))
-                                            if Int(weeklyMovie.audiInten)! >= 0 {
-                                                Text("(전주 대비 +\(weeklyMovie.audiInten))")
-                                                    .font(.system(size: 12))
-                                            } else {
-                                                Text("(전주 대비 \(weeklyMovie.audiInten))")
-                                                    .font(.system(size: 12))
-                                            }
-                                            
-                                        }
-                                        
-                                    })
-                                    
-                                    Spacer()
-                                    if weeklyMovie.rankOldAndNew == "NEW" {
-                                        ZStack {
-                                            RoundedRectangle(cornerRadius: 8)
-                                                .stroke(.cyan, lineWidth: 1)
-                                                .frame(width: 50, height: 30)
-                                                .foregroundStyle(.clear)
-                                            Text("NEW")
-                                                .foregroundStyle(.green)
-                                        }
+                            ZStack {
+                                Color.white
+                                
+                                HStack {
+                                    Text(weeklyMovie.rank)
+                                        .foregroundStyle(.black)
+                                        .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 0))
+                                    if Int(weeklyMovie.rankInten)! >= 0 {
+                                        Image(systemName: "arrowtriangle.up.fill")
+                                            .foregroundStyle(.red)
+                                            .frame(width: 10, height: 10)
+                                        Text("\(weeklyMovie.rankInten)")
+                                            .foregroundStyle(.black)
+                                    } else {
+                                        Image(systemName: "arrowtriangle.down.fill")
+                                            .foregroundStyle(.blue)
+                                        Text("\(weeklyMovie.rankInten)")
+                                            .foregroundStyle(.black)
                                     }
+                                    VStack(alignment: .leading, spacing: 10, content: {
+                                        HStack{
+                                            VStack(alignment: .leading, spacing: 20, content: {
+                                                HStack(alignment: .center, content: {
+                                                    Text("영화 제목 : \(weeklyMovie.movieNm)")
+                                                        .foregroundStyle(.black)
+                                                    
+                                                })
+                                                
+                                                    Text("관람객 수 : \(weeklyMovie.audiCnt)")
+                                                        .font(.system(size: 15))
+                                                        .foregroundStyle(.black)
+                                                    if Int(weeklyMovie.audiInten)! >= 0 {
+                                                        Text("(전주 대비 +\(weeklyMovie.audiInten))")
+                                                            .font(.system(size: 12))
+                                                            .foregroundStyle(.black)
+                                                    } else {
+                                                        Text("(전주 대비 \(weeklyMovie.audiInten))")
+                                                            .font(.system(size: 12))
+                                                            .foregroundStyle(.black)
+                                                    }
+                                                    
+                                                
+                                                
+                                            }).padding()
+                                            
+                                            Spacer()
+                                            if weeklyMovie.rankOldAndNew == "NEW" {
+                                                ZStack {
+                                                    RoundedRectangle(cornerRadius: 8)
+                                                        .stroke(.cyan, lineWidth: 2)
+                                                        .frame(width: 50, height: 30)
+                                                        .foregroundStyle(.clear)
+                                                    Text("NEW")
+                                                        .foregroundStyle(.green)
+                                                }.padding(10)
+                                            }
+                                        }
+                                    })
+                                    .frame(maxWidth: .infinity, alignment: .leading)
                                 }
-                            })
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            
+                                
+                                
+                            }
                         }
                         .ignoresSafeArea()
-                    } else {
-                        VStack(alignment: .leading, spacing: 10, content: {
-                            Text("불러오는중")
-                        })
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding()
                     }
-                }
+                    
+                }.listStyle(.plain)
             }
         }
     }
 }
-
 #Preview {
     Group {
         ContentView()
