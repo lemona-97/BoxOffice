@@ -87,7 +87,7 @@ class MovieViewModel: ObservableObject {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMdd"
         dateFormatter.locale = .current
-        let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: today)!
+        let yesterday = Calendar.current.date(byAdding: .day, value: -7, to: today)!
         let targetDate = dateFormatter.string(from: yesterday)
         guard let url = URL(string: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json?key=\(MOVIE_API_KEY)&targetDt=\(targetDate)") else { return }
         URLSession.shared.dataTaskPublisher(for: url)

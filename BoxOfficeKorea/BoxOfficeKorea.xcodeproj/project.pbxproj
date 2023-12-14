@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FA035CF52B283CCC00B63081 /* KEY.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA035CF42B283CCC00B63081 /* KEY.swift */; };
+		FA5BED2B2B2A8AC000A9456F /* MoviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5BED2A2B2A8AC000A9456F /* MoviewView.swift */; };
 		FA5C637A2B20132A00F718A4 /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C63792B20132A00F718A4 /* MovieViewModel.swift */; };
 		FA5C637C2B20133900F718A4 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C637B2B20133900F718A4 /* MovieModel.swift */; };
 		FAF7185A2B1715AD0074C36D /* BoxOfficeKoreaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF718592B1715AD0074C36D /* BoxOfficeKoreaApp.swift */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		FA035CF42B283CCC00B63081 /* KEY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KEY.swift; sourceTree = "<group>"; };
+		FA5BED2A2B2A8AC000A9456F /* MoviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviewView.swift; sourceTree = "<group>"; };
 		FA5C63792B20132A00F718A4 /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
 		FA5C637B2B20133900F718A4 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		FA5C637D2B201ECD00F718A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				FAF718672B1716190074C36D /* Model */,
 				FAF718592B1715AD0074C36D /* BoxOfficeKoreaApp.swift */,
 				FAF7185B2B1715AD0074C36D /* ContentView.swift */,
+				FA5BED2A2B2A8AC000A9456F /* MoviewView.swift */,
 				FA5C63792B20132A00F718A4 /* MovieViewModel.swift */,
 				FA5C637B2B20133900F718A4 /* MovieModel.swift */,
 				FA035CF32B283CB800B63081 /* APIService */,
@@ -165,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA5C637C2B20133900F718A4 /* MovieModel.swift in Sources */,
+				FA5BED2B2B2A8AC000A9456F /* MoviewView.swift in Sources */,
 				FAF7185C2B1715AD0074C36D /* ContentView.swift in Sources */,
 				FA035CF52B283CCC00B63081 /* KEY.swift in Sources */,
 				FAF7185A2B1715AD0074C36D /* BoxOfficeKoreaApp.swift in Sources */,
