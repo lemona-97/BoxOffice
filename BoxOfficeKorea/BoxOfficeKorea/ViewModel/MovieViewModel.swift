@@ -70,7 +70,6 @@ class MovieViewModel: ObservableObject {
                     response.statusCode >= 200 && response.statusCode < 300 else {
                     throw URLError(.badServerResponse)
                 }
-                
                 return data
             }
             .decode(type: WeeklyMovie.self, decoder: JSONDecoder())
@@ -79,7 +78,6 @@ class MovieViewModel: ObservableObject {
             } receiveValue: { [weak self] returnedMovie in
                 print(returnedMovie)
                 self?.weeklyMovies = returnedMovie.boxOfficeResult.weeklyBoxOfficeList
-                
             }
             .store(in: &cancellables)
     }
