@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		FA035CF52B283CCC00B63081 /* KEY.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA035CF42B283CCC00B63081 /* KEY.swift */; };
 		FA5BED2B2B2A8AC000A9456F /* MoviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5BED2A2B2A8AC000A9456F /* MoviewView.swift */; };
+		FA5BED2D2B2A96EF00A9456F /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5BED2C2B2A96EF00A9456F /* Categories.swift */; };
+		FA5BED362B2AA19E00A9456F /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5BED352B2AA19E00A9456F /* View.swift */; };
 		FA5C637A2B20132A00F718A4 /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C63792B20132A00F718A4 /* MovieViewModel.swift */; };
 		FA5C637C2B20133900F718A4 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C637B2B20133900F718A4 /* MovieModel.swift */; };
 		FAF7185A2B1715AD0074C36D /* BoxOfficeKoreaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF718592B1715AD0074C36D /* BoxOfficeKoreaApp.swift */; };
@@ -20,9 +22,11 @@
 /* Begin PBXFileReference section */
 		FA035CF42B283CCC00B63081 /* KEY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KEY.swift; sourceTree = "<group>"; };
 		FA5BED2A2B2A8AC000A9456F /* MoviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviewView.swift; sourceTree = "<group>"; };
+		FA5BED2C2B2A96EF00A9456F /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
+		FA5BED352B2AA19E00A9456F /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		FA5C63792B20132A00F718A4 /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
 		FA5C637B2B20133900F718A4 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
-		FA5C637D2B201ECD00F718A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		FA5C637D2B201ECD00F718A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAF718562B1715AD0074C36D /* BoxOfficeKorea.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoxOfficeKorea.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAF718592B1715AD0074C36D /* BoxOfficeKoreaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeKoreaApp.swift; sourceTree = "<group>"; };
 		FAF7185B2B1715AD0074C36D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -49,6 +53,39 @@
 			path = APIService;
 			sourceTree = "<group>";
 		};
+		FA5BED2E2B2A970700A9456F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FA5C63792B20132A00F718A4 /* MovieViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FA5BED2F2B2A971B00A9456F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FAF7185B2B1715AD0074C36D /* ContentView.swift */,
+				FA5BED2A2B2A8AC000A9456F /* MoviewView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FA5BED312B2A9C8900A9456F /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				FAF718592B1715AD0074C36D /* BoxOfficeKoreaApp.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		FA5BED342B2AA18D00A9456F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				FA5BED352B2AA19E00A9456F /* View.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		FAF7184D2B1715AD0074C36D = {
 			isa = PBXGroup;
 			children = (
@@ -69,14 +106,12 @@
 			isa = PBXGroup;
 			children = (
 				FA5C637D2B201ECD00F718A4 /* Info.plist */,
+				FA5BED312B2A9C8900A9456F /* Base */,
 				FAF718672B1716190074C36D /* Model */,
-				FAF718592B1715AD0074C36D /* BoxOfficeKoreaApp.swift */,
-				FAF7185B2B1715AD0074C36D /* ContentView.swift */,
-				FA5BED2A2B2A8AC000A9456F /* MoviewView.swift */,
-				FA5C63792B20132A00F718A4 /* MovieViewModel.swift */,
-				FA5C637B2B20133900F718A4 /* MovieModel.swift */,
+				FA5BED2E2B2A970700A9456F /* ViewModel */,
+				FA5BED2F2B2A971B00A9456F /* View */,
+				FA5BED342B2AA18D00A9456F /* Extension */,
 				FA035CF32B283CB800B63081 /* APIService */,
-				FAF7185D2B1715AE0074C36D /* Assets.xcassets */,
 				FAF7185F2B1715AE0074C36D /* Preview Content */,
 			);
 			path = BoxOfficeKorea;
@@ -86,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				FAF718602B1715AE0074C36D /* Preview Assets.xcassets */,
+				FAF7185D2B1715AE0074C36D /* Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -93,6 +129,8 @@
 		FAF718672B1716190074C36D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FA5BED2C2B2A96EF00A9456F /* Categories.swift */,
+				FA5C637B2B20133900F718A4 /* MovieModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -168,9 +206,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA5C637C2B20133900F718A4 /* MovieModel.swift in Sources */,
+				FA5BED2D2B2A96EF00A9456F /* Categories.swift in Sources */,
 				FA5BED2B2B2A8AC000A9456F /* MoviewView.swift in Sources */,
 				FAF7185C2B1715AD0074C36D /* ContentView.swift in Sources */,
 				FA035CF52B283CCC00B63081 /* KEY.swift in Sources */,
+				FA5BED362B2AA19E00A9456F /* View.swift in Sources */,
 				FAF7185A2B1715AD0074C36D /* BoxOfficeKoreaApp.swift in Sources */,
 				FA5C637A2B20132A00F718A4 /* MovieViewModel.swift in Sources */,
 			);

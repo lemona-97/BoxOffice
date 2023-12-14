@@ -12,6 +12,7 @@ struct ContentView: View {
     var categories : [Categories] = [Categories(categories: "일간", isSelected: true),
                                      Categories(categories: "주간", isSelected: false),
                                      Categories(categories: "주말", isSelected: false)]
+    
     var body: some View {
         ZStack {
             Color.white
@@ -84,17 +85,5 @@ struct ContentView: View {
     ContentView()
 }
 
-class Categories : Identifiable {
-    var id = UUID()
-    var categories : String
-    var isSelected : Bool
-    
-    init(categories: String, isSelected: Bool) {
-        self.categories = categories
-        self.isSelected = isSelected
-    }
-    func changeSelection() {
-        isSelected.toggle()
-    }
-}
+
 

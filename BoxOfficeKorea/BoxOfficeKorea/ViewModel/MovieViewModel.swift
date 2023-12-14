@@ -15,6 +15,7 @@ class MovieViewModel: ObservableObject {
     @Published var weekendMovies: [MovieModel] = []
     var today = Date()
     var cancellables = Set<AnyCancellable>()
+
     init() {
         getDailyBoxOffice()
     }
@@ -41,6 +42,7 @@ class MovieViewModel: ObservableObject {
             }
             .decode(type: DailyMovie.self, decoder: JSONDecoder())
             .sink { completion in
+    
                 print("Completion: \(completion)")
             } receiveValue: { [weak self] returnedMovie in
                 print(returnedMovie)
