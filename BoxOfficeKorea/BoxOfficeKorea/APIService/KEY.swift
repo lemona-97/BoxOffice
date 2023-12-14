@@ -6,4 +6,4 @@
 //
 
 let MOVIE_API_KEY = "bdb85692fed6dfa489f02f552d90fe92"
-let KAKAO = "ASD"
+

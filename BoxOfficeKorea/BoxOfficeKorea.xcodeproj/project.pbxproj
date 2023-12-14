@@ -11,6 +11,7 @@
 		FA5BED2B2B2A8AC000A9456F /* MoviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5BED2A2B2A8AC000A9456F /* MoviewView.swift */; };
 		FA5BED2D2B2A96EF00A9456F /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5BED2C2B2A96EF00A9456F /* Categories.swift */; };
 		FA5BED362B2AA19E00A9456F /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5BED352B2AA19E00A9456F /* View.swift */; };
+		FA5BED382B2ACE7C00A9456F /* KAKAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5BED372B2ACE7C00A9456F /* KAKAO.swift */; };
 		FA5C637A2B20132A00F718A4 /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C63792B20132A00F718A4 /* MovieViewModel.swift */; };
 		FA5C637C2B20133900F718A4 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C637B2B20133900F718A4 /* MovieModel.swift */; };
 		FAF7185A2B1715AD0074C36D /* BoxOfficeKoreaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF718592B1715AD0074C36D /* BoxOfficeKoreaApp.swift */; };
@@ -24,6 +25,7 @@
 		FA5BED2A2B2A8AC000A9456F /* MoviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviewView.swift; sourceTree = "<group>"; };
 		FA5BED2C2B2A96EF00A9456F /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		FA5BED352B2AA19E00A9456F /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		FA5BED372B2ACE7C00A9456F /* KAKAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAKAO.swift; sourceTree = "<group>"; };
 		FA5C63792B20132A00F718A4 /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
 		FA5C637B2B20133900F718A4 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		FA5C637D2B201ECD00F718A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				FA035CF42B283CCC00B63081 /* KEY.swift */,
+				FA5BED372B2ACE7C00A9456F /* KAKAO.swift */,
 			);
 			path = APIService;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 			files = (
 				FA5C637C2B20133900F718A4 /* MovieModel.swift in Sources */,
 				FA5BED2D2B2A96EF00A9456F /* Categories.swift in Sources */,
+				FA5BED382B2ACE7C00A9456F /* KAKAO.swift in Sources */,
 				FA5BED2B2B2A8AC000A9456F /* MoviewView.swift in Sources */,
 				FAF7185C2B1715AD0074C36D /* ContentView.swift in Sources */,
 				FA035CF52B283CCC00B63081 /* KEY.swift in Sources */,
