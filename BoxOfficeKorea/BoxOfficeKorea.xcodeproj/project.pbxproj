@@ -51,7 +51,6 @@
 			isa = PBXGroup;
 			children = (
 				FA035CF42B283CCC00B63081 /* KEY.swift */,
-				FA5BED372B2ACE7C00A9456F /* KAKAO.swift */,
 			);
 			path = APIService;
 			sourceTree = "<group>";
@@ -89,6 +88,14 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		FA5BED392B2AD37700A9456F /* KAKAO */ = {
+			isa = PBXGroup;
+			children = (
+				FA5BED372B2ACE7C00A9456F /* KAKAO.swift */,
+			);
+			path = KAKAO;
+			sourceTree = "<group>";
+		};
 		FAF7184D2B1715AD0074C36D = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +122,7 @@
 				FA5BED2F2B2A971B00A9456F /* View */,
 				FA5BED342B2AA18D00A9456F /* Extension */,
 				FA035CF32B283CB800B63081 /* APIService */,
+				FA5BED392B2AD37700A9456F /* KAKAO */,
 				FAF7185F2B1715AE0074C36D /* Preview Content */,
 			);
 			path = BoxOfficeKorea;
