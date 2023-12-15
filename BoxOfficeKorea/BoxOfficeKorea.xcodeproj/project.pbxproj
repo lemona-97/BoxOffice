@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D7D24B461FF985FFB964DAD /* Pods_BoxOfficeKorea.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8410F47482CE952BEA16322 /* Pods_BoxOfficeKorea.framework */; };
 		FA035CF52B283CCC00B63081 /* KEY.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA035CF42B283CCC00B63081 /* KEY.swift */; };
 		FA5BED2B2B2A8AC000A9456F /* MoviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5BED2A2B2A8AC000A9456F /* MoviewView.swift */; };
 		FA5BED2D2B2A96EF00A9456F /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5BED2C2B2A96EF00A9456F /* Categories.swift */; };
 		FA5BED362B2AA19E00A9456F /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5BED352B2AA19E00A9456F /* View.swift */; };
 		FA5BED382B2ACE7C00A9456F /* KAKAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5BED372B2ACE7C00A9456F /* KAKAO.swift */; };
+		FA5BED3B2B2AE22D00A9456F /* MovieImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5BED3A2B2AE22D00A9456F /* MovieImageModel.swift */; };
+		FA5BED3D2B2C2BD900A9456F /* AFService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5BED3C2B2C2BD900A9456F /* AFService.swift */; };
 		FA5C637A2B20132A00F718A4 /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C63792B20132A00F718A4 /* MovieViewModel.swift */; };
 		FA5C637C2B20133900F718A4 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C637B2B20133900F718A4 /* MovieModel.swift */; };
 		FAF7185A2B1715AD0074C36D /* BoxOfficeKoreaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF718592B1715AD0074C36D /* BoxOfficeKoreaApp.swift */; };
@@ -21,11 +24,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A8410F47482CE952BEA16322 /* Pods_BoxOfficeKorea.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BoxOfficeKorea.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCC795C415A07AC3BDD5BC9F /* Pods-BoxOfficeKorea.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoxOfficeKorea.release.xcconfig"; path = "Target Support Files/Pods-BoxOfficeKorea/Pods-BoxOfficeKorea.release.xcconfig"; sourceTree = "<group>"; };
+		EAF1151792FB0F6882B31F8F /* Pods-BoxOfficeKorea.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoxOfficeKorea.debug.xcconfig"; path = "Target Support Files/Pods-BoxOfficeKorea/Pods-BoxOfficeKorea.debug.xcconfig"; sourceTree = "<group>"; };
 		FA035CF42B283CCC00B63081 /* KEY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KEY.swift; sourceTree = "<group>"; };
 		FA5BED2A2B2A8AC000A9456F /* MoviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviewView.swift; sourceTree = "<group>"; };
 		FA5BED2C2B2A96EF00A9456F /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		FA5BED352B2AA19E00A9456F /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		FA5BED372B2ACE7C00A9456F /* KAKAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAKAO.swift; sourceTree = "<group>"; };
+		FA5BED3A2B2AE22D00A9456F /* MovieImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieImageModel.swift; sourceTree = "<group>"; };
+		FA5BED3C2B2C2BD900A9456F /* AFService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFService.swift; sourceTree = "<group>"; };
 		FA5C63792B20132A00F718A4 /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
 		FA5C637B2B20133900F718A4 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		FA5C637D2B201ECD00F718A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -41,16 +49,35 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D7D24B461FF985FFB964DAD /* Pods_BoxOfficeKorea.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06CFFA9E760C7A8BE77609D1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A8410F47482CE952BEA16322 /* Pods_BoxOfficeKorea.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F45A4AF5E0382811949624A0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EAF1151792FB0F6882B31F8F /* Pods-BoxOfficeKorea.debug.xcconfig */,
+				BCC795C415A07AC3BDD5BC9F /* Pods-BoxOfficeKorea.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		FA035CF32B283CB800B63081 /* APIService */ = {
 			isa = PBXGroup;
 			children = (
 				FA035CF42B283CCC00B63081 /* KEY.swift */,
+				FA5BED3C2B2C2BD900A9456F /* AFService.swift */,
 			);
 			path = APIService;
 			sourceTree = "<group>";
@@ -101,6 +128,8 @@
 			children = (
 				FAF718582B1715AD0074C36D /* BoxOfficeKorea */,
 				FAF718572B1715AD0074C36D /* Products */,
+				F45A4AF5E0382811949624A0 /* Pods */,
+				06CFFA9E760C7A8BE77609D1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -142,6 +171,7 @@
 			children = (
 				FA5BED2C2B2A96EF00A9456F /* Categories.swift */,
 				FA5C637B2B20133900F718A4 /* MovieModel.swift */,
+				FA5BED3A2B2AE22D00A9456F /* MovieImageModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -153,9 +183,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FAF718642B1715AE0074C36D /* Build configuration list for PBXNativeTarget "BoxOfficeKorea" */;
 			buildPhases = (
+				BDEB217AF17F9A1E371D468D /* [CP] Check Pods Manifest.lock */,
 				FAF718522B1715AD0074C36D /* Sources */,
 				FAF718532B1715AD0074C36D /* Frameworks */,
 				FAF718542B1715AD0074C36D /* Resources */,
+				34311C75105115B1D7213120 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -211,15 +243,59 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		34311C75105115B1D7213120 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BoxOfficeKorea/Pods-BoxOfficeKorea-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BoxOfficeKorea/Pods-BoxOfficeKorea-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BoxOfficeKorea/Pods-BoxOfficeKorea-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BDEB217AF17F9A1E371D468D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BoxOfficeKorea-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FAF718522B1715AD0074C36D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				FA5C637C2B20133900F718A4 /* MovieModel.swift in Sources */,
+				FA5BED3D2B2C2BD900A9456F /* AFService.swift in Sources */,
 				FA5BED2D2B2A96EF00A9456F /* Categories.swift in Sources */,
 				FA5BED382B2ACE7C00A9456F /* KAKAO.swift in Sources */,
 				FA5BED2B2B2A8AC000A9456F /* MoviewView.swift in Sources */,
+				FA5BED3B2B2AE22D00A9456F /* MovieImageModel.swift in Sources */,
 				FAF7185C2B1715AD0074C36D /* ContentView.swift in Sources */,
 				FA035CF52B283CCC00B63081 /* KEY.swift in Sources */,
 				FA5BED362B2AA19E00A9456F /* View.swift in Sources */,
@@ -268,7 +344,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -331,7 +407,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -352,6 +428,7 @@
 		};
 		FAF718652B1715AE0074C36D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EAF1151792FB0F6882B31F8F /* Pods-BoxOfficeKorea.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -374,6 +451,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.henry.BoxOfficeKorea;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -382,6 +462,7 @@
 		};
 		FAF718662B1715AE0074C36D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BCC795C415A07AC3BDD5BC9F /* Pods-BoxOfficeKorea.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -404,6 +485,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.henry.BoxOfficeKorea;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

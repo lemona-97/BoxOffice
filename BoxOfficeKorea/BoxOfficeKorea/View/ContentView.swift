@@ -69,11 +69,12 @@ struct ContentView: View {
                 }
                 List {
                     if !viewModel.dailyMovies.isEmpty {
-                        MovieView(movies: viewModel.dailyMovies)
+                        MovieView(movies: viewModel.dailyMovies, movieImageURL: viewModel.moviewImagesURLs)
+                        
                     } else if !viewModel.weeklyMovies.isEmpty {
-                        MovieView(movies: viewModel.weeklyMovies)
+                        MovieView(movies: viewModel.weeklyMovies, movieImageURL: viewModel.moviewImagesURLs)
                     } else {
-                        MovieView(movies: viewModel.weekendMovies)
+                        MovieView(movies: viewModel.weekendMovies, movieImageURL: viewModel.moviewImagesURLs)
                     }
                     
                 }.listStyle(.plain)

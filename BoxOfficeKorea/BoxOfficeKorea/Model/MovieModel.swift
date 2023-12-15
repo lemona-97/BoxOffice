@@ -6,6 +6,7 @@
 //
 
 import Foundation
+/// 일일 영화 정보
 struct DailyMovie: Codable {
     let boxOfficeResult: DayBoxOfficeResult
 }
@@ -15,7 +16,7 @@ struct DayBoxOfficeResult: Codable {
     let dailyBoxOfficeList: [MovieModel]
 }
 
-
+/// 주간 / 주말 영화 정보
 struct WeeklyMovie: Codable {
     let boxOfficeResult: WeekBoxOfficeResult
 }
