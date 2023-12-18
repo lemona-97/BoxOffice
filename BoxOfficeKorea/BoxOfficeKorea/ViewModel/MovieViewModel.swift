@@ -59,6 +59,20 @@ class MovieViewModel: ObservableObject {
             } receiveValue: { [weak self] returnedMovie in
                 print(returnedMovie)
                 self?.dailyMovies = returnedMovie.boxOfficeResult.dailyBoxOfficeList
+                guard let self = self else { return }
+                DispatchQueue.main.async {
+                    Task {
+                        for movie in self.dailyMovies {
+                            do {
+                                try await self.getMoviePosters(movieName: movie.movieNm)
+                                
+                            } catch {
+                                print("포스터 가져오기 에러 \(error)")
+                            }
+                        }
+                    }
+                    
+                }
             }
             .store(in: &cancellables)
         
@@ -90,6 +104,20 @@ class MovieViewModel: ObservableObject {
             } receiveValue: { [weak self] returnedMovie in
                 print(returnedMovie)
                 self?.weeklyMovies = returnedMovie.boxOfficeResult.weeklyBoxOfficeList
+                guard let self = self else { return }
+                DispatchQueue.main.async {
+                    Task {
+                        for movie in self.weeklyMovies {
+                            do {
+                                try await self.getMoviePosters(movieName: movie.movieNm)
+                                
+                            } catch {
+                                print("포스터 가져오기 에러 \(error)")
+                            }
+                        }
+                    }
+                    
+                }
             }
             .store(in: &cancellables)
     }

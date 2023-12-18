@@ -68,17 +68,17 @@ struct MovieView: View {
                         if self.movieImageURL.count == self.movies.count {
                             if let urlString = self.movieImageURL[movie.movieNm] {
                                 if let url = URL(string: urlString) {
-                                    if let data = try? Data(contentsOf: url) {
-                                        Image(uiImage: UIImage(data: data)!)
-                                            .resizable(capInsets: EdgeInsets(), resizingMode: .stretch)
-                                            .frame(width: 100, height: 120)
-                                            
+                                    AsyncImage(url: url) { phase in
+                                        if let image = phase.image{
+                                            image.resizable()
+                                                .frame(width: 100, height: 120)
+                                                .clipped()
+                                                .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 20))
+                                        }
                                     }
                                 }
                             }
                         }
-                        
-                        
                     }
                 })
                 .frame(maxWidth: .infinity, alignment: .leading)
