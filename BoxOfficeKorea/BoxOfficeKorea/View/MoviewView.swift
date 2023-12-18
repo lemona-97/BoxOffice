@@ -36,9 +36,10 @@ struct MovieView: View {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 8)
                                     .stroke(.cyan, lineWidth: 2)
-                                    .frame(width: 30, height: 20)
+                                    .frame(width: 20, height: 10)
                                     .foregroundStyle(.clear)
                                 Text("NEW")
+                                    .font(.title)
                                     .foregroundStyle(.green)
                             }.padding(10)
                         }
@@ -63,13 +64,15 @@ struct MovieView: View {
                             }
                             
                         }).padding()
+                        Spacer()
                         if self.movieImageURL.count == self.movies.count {
                             if let urlString = self.movieImageURL[movie.movieNm] {
                                 if let url = URL(string: urlString) {
                                     if let data = try? Data(contentsOf: url) {
                                         Image(uiImage: UIImage(data: data)!)
-                                            .frame(width: 100, height: 100)
-                                            .clipped()
+                                            .resizable(capInsets: EdgeInsets(), resizingMode: .stretch)
+                                            .frame(width: 100, height: 120)
+                                            
                                     }
                                 }
                             }

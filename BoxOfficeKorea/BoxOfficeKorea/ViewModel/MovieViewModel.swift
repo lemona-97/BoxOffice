@@ -14,7 +14,6 @@ class MovieViewModel: ObservableObject {
     @Published var dailyMovies: [MovieModel] = []
     @Published var weeklyMovies: [MovieModel] = []
     @Published var weekendMovies: [MovieModel] = []
-    var movies : [MovieModel] = []
     @Published var moviewImagesURLs: [String : String] = [:] {
         didSet {
             print(moviewImagesURLs)
@@ -28,7 +27,9 @@ class MovieViewModel: ObservableObject {
     }
     
     private func clearInfo() {
+        self.dailyMovies.removeAll()
         self.weeklyMovies.removeAll()
+        self.weekendMovies.removeAll()
         self.moviewImagesURLs.removeAll()
     }
     func getDailyBoxOffice() {
@@ -133,9 +134,6 @@ class MovieViewModel: ObservableObject {
                     }
                     
                 }
-                
-                
-   
                 }.store(in: &cancellables)
 
     }
@@ -146,11 +144,7 @@ class MovieViewModel: ObservableObject {
         
         let headers : HTTPHeaders = [
                 "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
-                "Authorization": "\(KAKAO)", // 이 부분에 당신의 REST API 키 넣어주기
-                
-                /* ! 예시 !
-                "Authorization": "KakaoAK 1abec3hyn81d3nut7as" // KakaoAK 하고 띄어쓰기 유심히 보기
-                */
+                "Authorization": "\(KAKAO)",
             ]
         
         let parameters : [String: Any] = [
@@ -175,10 +169,8 @@ class MovieViewModel: ObservableObject {
                     print("2")
                     let json = try JSONDecoder().decode(MovieImageModel.self, from: jsonData)
                     print("3")
-                    print("4")
-                    print(json.documents)
-                    self.moviewImagesURLs.updateValue(json.documents.first!.thumbnail_url, forKey: movieName) 
-                    print("5")
+                    self.moviewImagesURLs.updateValue(json.documents.first!.image_url, forKey: movieName)
+
                 } catch (let error) {
                     print("catch error : \(error.localizedDescription)")
                 }
