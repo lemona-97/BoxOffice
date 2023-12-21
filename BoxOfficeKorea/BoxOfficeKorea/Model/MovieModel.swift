@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 /// 일일 영화 정보
 struct DailyMovie: Codable {
     let boxOfficeResult: DayBoxOfficeResult

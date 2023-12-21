@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// 으답
+/// 응답
 struct MovieImageModel : Decodable {
     var meta : Meta
     var documents : [Documents]

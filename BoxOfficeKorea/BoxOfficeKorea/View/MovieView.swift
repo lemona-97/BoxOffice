@@ -1,5 +1,5 @@
 //
-//  MoviewView.swift
+//  MovieView.swift
 //  BoxOfficeKorea
 //
 //  Created by wooseob on 12/14/23.
@@ -13,6 +13,7 @@ struct MovieView: View {
     var body: some View {
         
         ForEach(movies, id: \.movieCd) { movie in
+
             ZStack {
                 Color.white
                 VStack(alignment: .leading, spacing: 10, content: {
@@ -36,10 +37,10 @@ struct MovieView: View {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 8)
                                     .stroke(.cyan, lineWidth: 2)
-                                    .frame(width: 20, height: 10)
+                                    .frame(width: 80, height: 30)
                                     .foregroundStyle(.clear)
                                 Text("NEW")
-                                    .font(.title)
+                                    .font(.subheadline)
                                     .foregroundStyle(.green)
                             }.padding(10)
                         }
@@ -82,6 +83,11 @@ struct MovieView: View {
                     }
                 })
                 .frame(maxWidth: .infinity, alignment: .leading)
+                NavigationLink(destination: Text("상세보기")) {
+                    Rectangle()
+                        .foregroundStyle(.clear)
+                        .clipped()
+                }
             }
         }
         .ignoresSafeArea()

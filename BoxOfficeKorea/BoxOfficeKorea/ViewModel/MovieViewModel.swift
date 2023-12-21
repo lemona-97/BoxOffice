@@ -60,7 +60,7 @@ class MovieViewModel: ObservableObject {
                 print(returnedMovie)
                 self?.dailyMovies = returnedMovie.boxOfficeResult.dailyBoxOfficeList
                 guard let self = self else { return }
-                DispatchQueue.main.async {
+                
                     Task {
                         for movie in self.dailyMovies {
                             do {
@@ -72,10 +72,9 @@ class MovieViewModel: ObservableObject {
                         }
                     }
                     
-                }
+                
             }
             .store(in: &cancellables)
-        
     }
     
     func getWeeklyBoxOffice() {
@@ -207,24 +206,6 @@ class MovieViewModel: ObservableObject {
                 print("Request failed with error: \(error)")
             }
         }
-//        var request = URLRequest(url: url)
-//        request.httpMethod = "GET"
-//        request.addValue("Authorization", forHTTPHeaderField: KAKAO)
-//        let queryItem1 = URLQueryItem(name: "query", value: movieName)
-//        let queryItem2 = URLQueryItem(name: "size", value: "1")
-//        request.url?.append(queryItems: [queryItem2, queryItem1])
-//        print("request")
-//        dump(request)
-//        let (data, response) =  try await URLSession.shared.data(for: request)
-//        print("data : \(data)")
-//        print("response ; \(response)")
-//        guard let urlResponse = response as? HTTPURLResponse, urlResponse.statusCode == 200 else {
-//            throw NEWWORKERROR.networkFail
-//        }
-//        let posterData = try JSONDecoder().decode(MovieImageModel.self, from: data)
-//        print(posterData)
-//        return posterData.documents.image_url
-
     }
 }
 
