@@ -12,6 +12,7 @@ struct BoxOfficeKoreaApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+            
         }
     }
 }

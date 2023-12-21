@@ -70,23 +70,21 @@ class MovieViewModel: ObservableObject {
                 
                 guard let self = self else { return }
                 
-                    Task {
-                        for movie in self.dailyMovies {
-                            do {
-                                try await self.getMoviePosters(movieName: movie.movieNm)
-                                
-                            } catch {
-                                print("포스터 가져오기 에러 \(error)")
-                            }
-                            do {
-                                try await self.getMovieDetail(movieCd: movie.movieCd)
-                            } catch {
-                                print("영화 상세정보 가져오기 에러 \(error)")
-                            }
+                Task {
+                    for movie in self.dailyMovies {
+                        do {
+                            try await self.getMoviePosters(movieName: movie.movieNm)
+                            
+                        } catch {
+                            print("포스터 가져오기 에러 \(error)")
                         }
+                        
                     }
-                    
+                }
                 
+                for movie in self.dailyMovies {
+                    self.getMovieDetail(movieCd: movie.movieCd)
+                }
             }
             .store(in: &cancellables)
     }
@@ -118,18 +116,21 @@ class MovieViewModel: ObservableObject {
                 print(returnedMovie)
                 self?.weeklyMovies = returnedMovie.boxOfficeResult.weeklyBoxOfficeList
                 guard let self = self else { return }
-                DispatchQueue.main.async {
-                    Task {
-                        for movie in self.weeklyMovies {
-                            do {
-                                try await self.getMoviePosters(movieName: movie.movieNm)
-                                
-                            } catch {
-                                print("포스터 가져오기 에러 \(error)")
-                            }
+                
+                Task {
+                    for movie in self.weeklyMovies {
+                        do {
+                            try await self.getMoviePosters(movieName: movie.movieNm)
+                            
+                        } catch {
+                            print("포스터 가져오기 에러 \(error)")
                         }
                     }
-                    
+                }
+                
+                
+                for movie in self.weeklyMovies {
+                    self.getMovieDetail(movieCd: movie.movieCd)
                 }
             }
             .store(in: &cancellables)
@@ -159,24 +160,30 @@ class MovieViewModel: ObservableObject {
                 print("Completion: \(completion)")
             } receiveValue: { [weak self] returnedMovie in
                 print(returnedMovie)
-             
+                
                 self?.weekendMovies = returnedMovie.boxOfficeResult.weeklyBoxOfficeList
                 guard let self = self else { return }
-                DispatchQueue.main.async {
-                    Task {
-                        for movie in self.weekendMovies {
-                            do {
-                                try await self.getMoviePosters(movieName: movie.movieNm)
-                                
-                            } catch {
-                                print("포스터 가져오기 에러 \(error)")
-                            }
+                
+                Task {
+                    for movie in self.weekendMovies {
+                        do {
+                            try await self.getMoviePosters(movieName: movie.movieNm)
+                            
+                        } catch {
+                            print("포스터 가져오기 에러 \(error)")
                         }
+                        
+                        
                     }
-                    
                 }
-                }.store(in: &cancellables)
-
+                
+                
+                for movie in self.weekendMovies {
+                    self.getMovieDetail(movieCd: movie.movieCd)
+                }
+                
+            }.store(in: &cancellables)
+        
     }
     
     func getMoviePosters(movieName: String) async throws {
@@ -184,9 +191,9 @@ class MovieViewModel: ObservableObject {
         guard let url = URL(string:"https://dapi.kakao.com/v2/search/image") else { return }
         
         let headers : HTTPHeaders = [
-                "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
-                "Authorization": "\(KAKAO)",
-            ]
+            "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
+            "Authorization": "\(KAKAO)",
+        ]
         
         let parameters : [String: Any] = [
             "query" : "\(movieName)",
@@ -211,7 +218,7 @@ class MovieViewModel: ObservableObject {
                     let json = try JSONDecoder().decode(MovieImageModel.self, from: jsonData)
                     print("3")
                     self.movieImagesURLs.updateValue(json.documents.first!.image_url, forKey: movieName)
-
+                    
                 } catch (let error) {
                     print("catch error : \(error.localizedDescription)")
                 }

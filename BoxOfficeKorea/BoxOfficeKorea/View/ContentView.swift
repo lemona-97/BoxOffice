@@ -19,7 +19,7 @@ struct ContentView: View {
                 Color.white
                     .ignoresSafeArea()
                 VStack (spacing: 20){
-                    Text("한국 Box Office")
+                    Text("박스오피스")
                         .foregroundStyle(.black)
                         .padding(5)
                     HStack{
@@ -39,8 +39,8 @@ struct ContentView: View {
                                         } else { // 주말
                                             viewModel.getWeekendBoxOffice()
                                         }
-                                    })
-                                    .foregroundStyle(.blue)
+                                    }).fontWeight(.bold)
+                                        .foregroundStyle(.black)
                                     .frame(width: 100, height: 60)
                                 } else {
                                     Button(category.categories, action: {
@@ -61,7 +61,8 @@ struct ContentView: View {
                                             viewModel.getWeekendBoxOffice()
                                         }
                                     })
-                                    .foregroundStyle(.pink)
+                                    .fontWeight(.medium)
+                                    .foregroundStyle(.gray)
                                     .frame(width: 100, height: 60)
                                 }
                             }
@@ -93,6 +94,7 @@ struct ContentView: View {
         })
         
     }
+    
 }
 #Preview {
     ContentView()

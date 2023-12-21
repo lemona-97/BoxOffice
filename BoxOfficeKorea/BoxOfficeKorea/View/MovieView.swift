@@ -47,10 +47,11 @@ struct MovieView: View {
                     HStack{
                         VStack(alignment: .leading, spacing: 20, content: {
                             HStack(alignment: .center, content: {
-                                Text("영화 제목 : \(movie.movieNm)")
+                                Text("\(movie.movieNm)")
+                                    .fontWeight(.bold)
                                     .foregroundStyle(.black)
                             })
-                            Text("관람객 수 : \(movie.audiCnt)")
+                            Text("관람객 수 : \(movie.audiCnt.insertComma)")
                                 .font(.system(size: 15))
                                 .foregroundStyle(.black)
                             if Int(movie.audiInten)! >= 0 {
@@ -87,10 +88,13 @@ struct MovieView: View {
                         Rectangle()
                             .foregroundStyle(.clear)
                             .clipped()
-                    }
+                     }
                  }
             }
         }
         .ignoresSafeArea()
     }
+}
+#Preview {
+    ContentView()
 }
