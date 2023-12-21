@@ -14,11 +14,17 @@ class MovieViewModel: ObservableObject {
     @Published var dailyMovies: [MovieModel] = []
     @Published var weeklyMovies: [MovieModel] = []
     @Published var weekendMovies: [MovieModel] = []
-    @Published var moviewImagesURLs: [String : String] = [:] {
+    @Published var movieDetails : [String : MovieDetailModel] = [:] {
         didSet {
-            print(moviewImagesURLs)
+            print(movieDetails)
         }
     }
+    @Published var movieImagesURLs: [String : String] = [:] {
+        didSet {
+            print(movieImagesURLs)
+        }
+    }
+    
     var today = Date()
     var cancellables = Set<AnyCancellable>()
     
@@ -30,7 +36,9 @@ class MovieViewModel: ObservableObject {
         self.dailyMovies.removeAll()
         self.weeklyMovies.removeAll()
         self.weekendMovies.removeAll()
-        self.moviewImagesURLs.removeAll()
+        self.movieDetails.removeAll()
+        self.movieImagesURLs.removeAll()
+        
     }
     func getDailyBoxOffice() {
         clearInfo()
@@ -59,6 +67,7 @@ class MovieViewModel: ObservableObject {
             } receiveValue: { [weak self] returnedMovie in
                 print(returnedMovie)
                 self?.dailyMovies = returnedMovie.boxOfficeResult.dailyBoxOfficeList
+                
                 guard let self = self else { return }
                 
                     Task {
@@ -68,6 +77,11 @@ class MovieViewModel: ObservableObject {
                                 
                             } catch {
                                 print("포스터 가져오기 에러 \(error)")
+                            }
+                            do {
+                                try await self.getMovieDetail(movieCd: movie.movieCd)
+                            } catch {
+                                print("영화 상세정보 가져오기 에러 \(error)")
                             }
                         }
                     }
@@ -175,7 +189,7 @@ class MovieViewModel: ObservableObject {
             ]
         
         let parameters : [String: Any] = [
-            "query" : movieName,
+            "query" : "\(movieName)",
             "size" : 1
         ]
         AF.request(url,
@@ -196,7 +210,7 @@ class MovieViewModel: ObservableObject {
                     print("2")
                     let json = try JSONDecoder().decode(MovieImageModel.self, from: jsonData)
                     print("3")
-                    self.moviewImagesURLs.updateValue(json.documents.first!.image_url, forKey: movieName)
+                    self.movieImagesURLs.updateValue(json.documents.first!.image_url, forKey: movieName)
 
                 } catch (let error) {
                     print("catch error : \(error.localizedDescription)")
@@ -206,6 +220,34 @@ class MovieViewModel: ObservableObject {
                 print("Request failed with error: \(error)")
             }
         }
+    }
+    
+    func getMovieDetail(movieCd : String) {
+        print("get Movie Detail")
+        
+        guard let url = URL(string: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=\(MOVIE_API_KEY)&movieCd=\(movieCd)") else { return }
+        URLSession.shared.dataTaskPublisher(for: url)
+            .subscribe(on: DispatchQueue.global(qos: .background))
+            .receive(on: DispatchQueue.main)
+            .tryMap { data, response -> Data in
+                guard
+                    let response = response as? HTTPURLResponse,
+                    response.statusCode >= 200 && response.statusCode < 300 else {
+                    throw URLError(.badServerResponse)
+                }
+                
+                return data
+            }
+            .decode(type: MovieDetailModel.self, decoder: JSONDecoder())
+            .sink { completion in
+                
+                print("Completion: \(completion)")
+            } receiveValue: { [weak self] returnedMovie in
+                print("상세정보")
+                print(returnedMovie)
+                self?.movieDetails.updateValue(returnedMovie, forKey: movieCd)
+            }
+            .store(in: &cancellables)
     }
 }
 

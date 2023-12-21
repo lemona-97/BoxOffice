@@ -10,11 +10,10 @@ import SwiftUI
 struct MovieView: View {
     var movies : [MovieModel]
     var movieImageURL : [String : String]
+    var movieDetails : [String : MovieDetailModel]
     var body: some View {
-        
         ForEach(movies, id: \.movieCd) { movie in
-
-            ZStack {
+             ZStack {
                 Color.white
                 VStack(alignment: .leading, spacing: 10, content: {
                     HStack {
@@ -74,7 +73,7 @@ struct MovieView: View {
                                             image.resizable()
                                                 .frame(width: 100, height: 120)
                                                 .clipped()
-                                                .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 20))
+                                                .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
                                         }
                                     }
                                 }
@@ -83,17 +82,15 @@ struct MovieView: View {
                     }
                 })
                 .frame(maxWidth: .infinity, alignment: .leading)
-                NavigationLink(destination: Text("상세보기")) {
-                    Rectangle()
-                        .foregroundStyle(.clear)
-                        .clipped()
-                }
+                 if let movieDetail = movieDetails[movie.movieCd] {
+                     NavigationLink(destination:MovieDetailView(movieInfo: movie, movieImageURL: movieImageURL, movieDetail: movieDetail)) {
+                        Rectangle()
+                            .foregroundStyle(.clear)
+                            .clipped()
+                    }
+                 }
             }
         }
         .ignoresSafeArea()
     }
-}
-
-#Preview {
-    MovieView(movies: [MovieModel(rnum: "5", rank: "5", rankInten: "19", rankOldAndNew: "OLD", movieCd: "20235980", movieNm: "말하고 싶은 비밀", openDt: "2023-12-13", salesAmt: "81703666", salesShare: "2.9", salesInten: "77851666", salesChange: "2021.1", salesAcc: "102324666", audiCnt: "9154", audiInten: "8726", audiChange: "2038.8", audiAcc: "11409", scrnCnt: "401", showCnt: "696")], movieImageURL: ["뽀로로": "https://search3.kakaocdn.net/argon/130x130_85_c/Jxf8lVM0M8M"])
 }
