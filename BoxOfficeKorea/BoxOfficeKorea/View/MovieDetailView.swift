@@ -31,8 +31,8 @@ struct MovieDetailView: View {
                     AsyncImage(url: url) { phase in
                         if let image = phase.image{
                             image.resizable()
-                                .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height * 0.75)
-                                .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                                .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.width * 1.08)
+                                .padding(EdgeInsets(top: 0, leading: 20, bottom: 20, trailing: 20))
                                 .aspectRatio(contentMode: .fit)
                                 .clipped()
                                 .scaleEffect(zoom)
@@ -43,12 +43,12 @@ struct MovieDetailView: View {
                     }
                 }
             }
-            Spacer()
+            
             HStack(alignment: .center, content: {
                 Text("개봉일 : ")
                 Text("\(movieInfo.openDt)")
                 
-            }).padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
+            }).padding(EdgeInsets(top: 0, leading: 20, bottom: 10, trailing: 20))
             
             HStack(alignment: .center, content: {
                 Text("감독 :")
@@ -58,7 +58,7 @@ struct MovieDetailView: View {
                     Text("감독 정보 미제공")
                 }
                 
-            }).padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
+            }).padding(EdgeInsets(top: 0, leading: 20, bottom: 10, trailing: 20))
             HStack(alignment: .center, content: {
                 Text("주연 :")
                 if !movieDetail.movieInfoResult.movieInfo.actors.isEmpty {
@@ -67,17 +67,17 @@ struct MovieDetailView: View {
                     Text("출연진 정보 미제공")
                 }
                 
-            }).padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
+            }).padding(EdgeInsets(top: 0, leading: 20, bottom: 10, trailing: 20))
             HStack(alignment: .center, content: {
                 Text("누적 매출액")
                 Text("\(movieInfo.salesAcc.insertComma)원")
               
-            }).padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
+            }).padding(EdgeInsets(top: 0, leading: 20, bottom: 10, trailing: 20))
             HStack(alignment: .center, content: {
                 Text("누적 관객수 :")
                 Text("\(movieInfo.audiAcc.insertComma)")
              
-            }).padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
+            }).padding(EdgeInsets(top: 0, leading: 20, bottom: 10, trailing: 20))
             Spacer()
         }).navigationBarBackButtonHidden(true)
             .toolbar(content: {

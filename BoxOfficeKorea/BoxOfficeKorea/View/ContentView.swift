@@ -19,7 +19,7 @@ struct ContentView: View {
                 Color.white
                     .ignoresSafeArea()
                 VStack (spacing: 20){
-                    Text("박스오피스")
+                    Text("국내 박스오피스")
                         .foregroundStyle(.black)
                         .padding(5)
                     HStack{
@@ -70,7 +70,6 @@ struct ContentView: View {
                         }
                     }
                     List {
-                        
                         if !viewModel.dailyMovies.isEmpty {
                             MovieView(movies: viewModel.dailyMovies,
                                       movieImageURL: viewModel.movieImagesURLs,
@@ -84,17 +83,11 @@ struct ContentView: View {
                                       movieImageURL: viewModel.movieImagesURLs, 
                                       movieDetails: viewModel.movieDetails)
                         }
-                        
                     }.listStyle(.plain)
                 }
-                
             }
-            
-            
         })
-        
     }
-    
 }
 #Preview {
     ContentView()

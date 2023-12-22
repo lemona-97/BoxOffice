@@ -11,6 +11,16 @@
 		FA3EF6A92B33DD4C00B440E4 /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3EF6A82B33DD4C00B440E4 /* MovieDetailView.swift */; };
 		FA3EF6AB2B33E66100B440E4 /* MovieDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3EF6AA2B33E66100B440E4 /* MovieDetailModel.swift */; };
 		FA3EF6AF2B341C5900B440E4 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3EF6AE2B341C5900B440E4 /* String.swift */; };
+		FA3EF6B62B35291900B440E4 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA3EF6B52B35291900B440E4 /* WidgetKit.framework */; };
+		FA3EF6B82B35291900B440E4 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA3EF6B72B35291900B440E4 /* SwiftUI.framework */; };
+		FA3EF6BB2B35291900B440E4 /* MyWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3EF6BA2B35291900B440E4 /* MyWidgetBundle.swift */; };
+		FA3EF6BD2B35291900B440E4 /* MyWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3EF6BC2B35291900B440E4 /* MyWidgetLiveActivity.swift */; };
+		FA3EF6BF2B35291900B440E4 /* MyWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3EF6BE2B35291900B440E4 /* MyWidget.swift */; };
+		FA3EF6C12B35291900B440E4 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3EF6C02B35291900B440E4 /* AppIntent.swift */; };
+		FA3EF6C32B35291A00B440E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA3EF6C22B35291A00B440E4 /* Assets.xcassets */; };
+		FA3EF6C72B35291A00B440E4 /* MyWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = FA3EF6B42B35291800B440E4 /* MyWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FA3EF6CE2B35355800B440E4 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3EF6CD2B35355800B440E4 /* ImageCacheManager.swift */; };
+		FA3EF6CF2B35355800B440E4 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3EF6CD2B35355800B440E4 /* ImageCacheManager.swift */; };
 		FA5BED2B2B2A8AC000A9456F /* MovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5BED2A2B2A8AC000A9456F /* MovieView.swift */; };
 		FA5BED2D2B2A96EF00A9456F /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5BED2C2B2A96EF00A9456F /* Categories.swift */; };
 		FA5BED362B2AA19E00A9456F /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5BED352B2AA19E00A9456F /* View.swift */; };
@@ -25,6 +35,30 @@
 		FAF718612B1715AE0074C36D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAF718602B1715AE0074C36D /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		FA3EF6C52B35291A00B440E4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FAF7184E2B1715AD0074C36D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA3EF6B32B35291800B440E4;
+			remoteInfo = MyWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FA3EF6C82B35291A00B440E4 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				FA3EF6C72B35291A00B440E4 /* MyWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		A8410F47482CE952BEA16322 /* Pods_BoxOfficeKorea.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BoxOfficeKorea.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCC795C415A07AC3BDD5BC9F /* Pods-BoxOfficeKorea.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BoxOfficeKorea.release.xcconfig"; path = "Target Support Files/Pods-BoxOfficeKorea/Pods-BoxOfficeKorea.release.xcconfig"; sourceTree = "<group>"; };
@@ -32,6 +66,16 @@
 		FA3EF6A82B33DD4C00B440E4 /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
 		FA3EF6AA2B33E66100B440E4 /* MovieDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailModel.swift; sourceTree = "<group>"; };
 		FA3EF6AE2B341C5900B440E4 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		FA3EF6B42B35291800B440E4 /* MyWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MyWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA3EF6B52B35291900B440E4 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		FA3EF6B72B35291900B440E4 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		FA3EF6BA2B35291900B440E4 /* MyWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWidgetBundle.swift; sourceTree = "<group>"; };
+		FA3EF6BC2B35291900B440E4 /* MyWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWidgetLiveActivity.swift; sourceTree = "<group>"; };
+		FA3EF6BE2B35291900B440E4 /* MyWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWidget.swift; sourceTree = "<group>"; };
+		FA3EF6C02B35291900B440E4 /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
+		FA3EF6C22B35291A00B440E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FA3EF6C42B35291A00B440E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA3EF6CD2B35355800B440E4 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		FA5BED2A2B2A8AC000A9456F /* MovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieView.swift; sourceTree = "<group>"; };
 		FA5BED2C2B2A96EF00A9456F /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		FA5BED352B2AA19E00A9456F /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -49,6 +93,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		FA3EF6B12B35291800B440E4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA3EF6B82B35291900B440E4 /* SwiftUI.framework in Frameworks */,
+				FA3EF6B62B35291900B440E4 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FAF718532B1715AD0074C36D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -64,6 +117,8 @@
 			isa = PBXGroup;
 			children = (
 				A8410F47482CE952BEA16322 /* Pods_BoxOfficeKorea.framework */,
+				FA3EF6B52B35291900B440E4 /* WidgetKit.framework */,
+				FA3EF6B72B35291900B440E4 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -83,6 +138,27 @@
 				FAB3CE9B2B30445300CD42F6 /* KEY.swift */,
 			);
 			path = APIService;
+			sourceTree = "<group>";
+		};
+		FA3EF6B92B35291900B440E4 /* MyWidget */ = {
+			isa = PBXGroup;
+			children = (
+				FA3EF6BA2B35291900B440E4 /* MyWidgetBundle.swift */,
+				FA3EF6BC2B35291900B440E4 /* MyWidgetLiveActivity.swift */,
+				FA3EF6BE2B35291900B440E4 /* MyWidget.swift */,
+				FA3EF6C02B35291900B440E4 /* AppIntent.swift */,
+				FA3EF6C22B35291A00B440E4 /* Assets.xcassets */,
+				FA3EF6C42B35291A00B440E4 /* Info.plist */,
+			);
+			path = MyWidget;
+			sourceTree = "<group>";
+		};
+		FA3EF6CC2B35353D00B440E4 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				FA3EF6CD2B35355800B440E4 /* ImageCacheManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		FA5BED2E2B2A970700A9456F /* ViewModel */ = {
@@ -132,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				FAF718582B1715AD0074C36D /* BoxOfficeKorea */,
+				FA3EF6B92B35291900B440E4 /* MyWidget */,
 				FAF718572B1715AD0074C36D /* Products */,
 				F45A4AF5E0382811949624A0 /* Pods */,
 				06CFFA9E760C7A8BE77609D1 /* Frameworks */,
@@ -142,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				FAF718562B1715AD0074C36D /* BoxOfficeKorea.app */,
+				FA3EF6B42B35291800B440E4 /* MyWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -154,6 +232,7 @@
 				FAF718672B1716190074C36D /* Model */,
 				FA5BED2E2B2A970700A9456F /* ViewModel */,
 				FA5BED2F2B2A971B00A9456F /* View */,
+				FA3EF6CC2B35353D00B440E4 /* Manager */,
 				FA5BED342B2AA18D00A9456F /* Extension */,
 				FA035CF32B283CB800B63081 /* APIService */,
 				FAB3CE9D2B30446000CD42F6 /* KAKAO */,
@@ -185,6 +264,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		FA3EF6B32B35291800B440E4 /* MyWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA3EF6CB2B35291A00B440E4 /* Build configuration list for PBXNativeTarget "MyWidgetExtension" */;
+			buildPhases = (
+				FA3EF6B02B35291800B440E4 /* Sources */,
+				FA3EF6B12B35291800B440E4 /* Frameworks */,
+				FA3EF6B22B35291800B440E4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyWidgetExtension;
+			productName = MyWidgetExtension;
+			productReference = FA3EF6B42B35291800B440E4 /* MyWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		FAF718552B1715AD0074C36D /* BoxOfficeKorea */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FAF718642B1715AE0074C36D /* Build configuration list for PBXNativeTarget "BoxOfficeKorea" */;
@@ -194,10 +290,12 @@
 				FAF718532B1715AD0074C36D /* Frameworks */,
 				FAF718542B1715AD0074C36D /* Resources */,
 				34311C75105115B1D7213120 /* [CP] Embed Pods Frameworks */,
+				FA3EF6C82B35291A00B440E4 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				FA3EF6C62B35291A00B440E4 /* PBXTargetDependency */,
 			);
 			name = BoxOfficeKorea;
 			productName = BoxOfficeKorea;
@@ -214,6 +312,9 @@
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
+					FA3EF6B32B35291800B440E4 = {
+						CreatedOnToolsVersion = 15.0;
+					};
 					FAF718552B1715AD0074C36D = {
 						CreatedOnToolsVersion = 15.0;
 					};
@@ -233,11 +334,20 @@
 			projectRoot = "";
 			targets = (
 				FAF718552B1715AD0074C36D /* BoxOfficeKorea */,
+				FA3EF6B32B35291800B440E4 /* MyWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		FA3EF6B22B35291800B440E4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA3EF6C32B35291A00B440E4 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FAF718542B1715AD0074C36D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -292,6 +402,18 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		FA3EF6B02B35291800B440E4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA3EF6BD2B35291900B440E4 /* MyWidgetLiveActivity.swift in Sources */,
+				FA3EF6C12B35291900B440E4 /* AppIntent.swift in Sources */,
+				FA3EF6CF2B35355800B440E4 /* ImageCacheManager.swift in Sources */,
+				FA3EF6BB2B35291900B440E4 /* MyWidgetBundle.swift in Sources */,
+				FA3EF6BF2B35291900B440E4 /* MyWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FAF718522B1715AD0074C36D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -304,6 +426,7 @@
 				FAB3CE9F2B30446F00CD42F6 /* KAKAO.swift in Sources */,
 				FA5BED3B2B2AE22D00A9456F /* MovieImageModel.swift in Sources */,
 				FAF7185C2B1715AD0074C36D /* ContentView.swift in Sources */,
+				FA3EF6CE2B35355800B440E4 /* ImageCacheManager.swift in Sources */,
 				FA5BED362B2AA19E00A9456F /* View.swift in Sources */,
 				FAB3CE9C2B30445300CD42F6 /* KEY.swift in Sources */,
 				FAF7185A2B1715AD0074C36D /* BoxOfficeKoreaApp.swift in Sources */,
@@ -314,7 +437,71 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		FA3EF6C62B35291A00B440E4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA3EF6B32B35291800B440E4 /* MyWidgetExtension */;
+			targetProxy = FA3EF6C52B35291A00B440E4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		FA3EF6C92B35291A00B440E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WJVGRM2SN6;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MyWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MyWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.henry.BoxOfficeKorea.MyWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FA3EF6CA2B35291A00B440E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WJVGRM2SN6;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MyWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MyWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.henry.BoxOfficeKorea.MyWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		FAF718622B1715AE0074C36D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -438,6 +625,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EAF1151792FB0F6882B31F8F /* Pods-BoxOfficeKorea.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -473,6 +661,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BCC795C415A07AC3BDD5BC9F /* Pods-BoxOfficeKorea.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -507,6 +696,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		FA3EF6CB2B35291A00B440E4 /* Build configuration list for PBXNativeTarget "MyWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA3EF6C92B35291A00B440E4 /* Debug */,
+				FA3EF6CA2B35291A00B440E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FAF718512B1715AD0074C36D /* Build configuration list for PBXProject "BoxOfficeKorea" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

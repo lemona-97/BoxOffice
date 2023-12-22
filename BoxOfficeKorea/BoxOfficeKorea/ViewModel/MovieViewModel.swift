@@ -14,16 +14,8 @@ class MovieViewModel: ObservableObject {
     @Published var dailyMovies: [MovieModel] = []
     @Published var weeklyMovies: [MovieModel] = []
     @Published var weekendMovies: [MovieModel] = []
-    @Published var movieDetails : [String : MovieDetailModel] = [:] {
-        didSet {
-            print(movieDetails)
-        }
-    }
-    @Published var movieImagesURLs: [String : String] = [:] {
-        didSet {
-            print(movieImagesURLs)
-        }
-    }
+    @Published var movieDetails : [String : MovieDetailModel] = [:]
+    @Published var movieImagesURLs: [String : String] = [:]
     
     var today = Date()
     var cancellables = Set<AnyCancellable>()
@@ -38,7 +30,6 @@ class MovieViewModel: ObservableObject {
         self.weekendMovies.removeAll()
         self.movieDetails.removeAll()
         self.movieImagesURLs.removeAll()
-        
     }
     func getDailyBoxOffice() {
         clearInfo()
@@ -57,12 +48,10 @@ class MovieViewModel: ObservableObject {
                     response.statusCode >= 200 && response.statusCode < 300 else {
                     throw URLError(.badServerResponse)
                 }
-                
                 return data
             }
             .decode(type: DailyMovie.self, decoder: JSONDecoder())
             .sink { completion in
-                
                 print("Completion: \(completion)")
             } receiveValue: { [weak self] returnedMovie in
                 print(returnedMovie)
@@ -74,14 +63,11 @@ class MovieViewModel: ObservableObject {
                     for movie in self.dailyMovies {
                         do {
                             try await self.getMoviePosters(movieName: movie.movieNm)
-                            
                         } catch {
                             print("포스터 가져오기 에러 \(error)")
                         }
-                        
                     }
                 }
-                
                 for movie in self.dailyMovies {
                     self.getMovieDetail(movieCd: movie.movieCd)
                 }
@@ -121,14 +107,11 @@ class MovieViewModel: ObservableObject {
                     for movie in self.weeklyMovies {
                         do {
                             try await self.getMoviePosters(movieName: movie.movieNm)
-                            
                         } catch {
                             print("포스터 가져오기 에러 \(error)")
                         }
                     }
                 }
-                
-                
                 for movie in self.weeklyMovies {
                     self.getMovieDetail(movieCd: movie.movieCd)
                 }
@@ -160,10 +143,8 @@ class MovieViewModel: ObservableObject {
                 print("Completion: \(completion)")
             } receiveValue: { [weak self] returnedMovie in
                 print(returnedMovie)
-                
                 self?.weekendMovies = returnedMovie.boxOfficeResult.weeklyBoxOfficeList
                 guard let self = self else { return }
-                
                 Task {
                     for movie in self.weekendMovies {
                         do {
@@ -172,16 +153,12 @@ class MovieViewModel: ObservableObject {
                         } catch {
                             print("포스터 가져오기 에러 \(error)")
                         }
-                        
-                        
+  
                     }
                 }
-                
-                
                 for movie in self.weekendMovies {
                     self.getMovieDetail(movieCd: movie.movieCd)
                 }
-                
             }.store(in: &cancellables)
         
     }
@@ -189,15 +166,13 @@ class MovieViewModel: ObservableObject {
     func getMoviePosters(movieName: String) async throws {
         
         guard let url = URL(string:"https://dapi.kakao.com/v2/search/image") else { return }
-        
         let headers : HTTPHeaders = [
             "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
             "Authorization": "\(KAKAO)",
         ]
-        
         let parameters : [String: Any] = [
             "query" : "\(movieName)",
-            "size" : 1
+            "size" : 1,
         ]
         AF.request(url,
                    method: .get,
@@ -209,7 +184,6 @@ class MovieViewModel: ObservableObject {
             switch response.result {
             case .success(let res):
                 let resultData = String(data: response.data!, encoding: .utf8)
-                
                 do {
                     // 반환값을 Data 타입으로 변환
                     print("1")
@@ -222,7 +196,6 @@ class MovieViewModel: ObservableObject {
                 } catch (let error) {
                     print("catch error : \(error.localizedDescription)")
                 }
-                
             case .failure(let error):
                 print("Request failed with error: \(error)")
             }
@@ -231,7 +204,6 @@ class MovieViewModel: ObservableObject {
     
     func getMovieDetail(movieCd : String) {
         print("get Movie Detail")
-        
         guard let url = URL(string: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=\(MOVIE_API_KEY)&movieCd=\(movieCd)") else { return }
         URLSession.shared.dataTaskPublisher(for: url)
             .subscribe(on: DispatchQueue.global(qos: .background))
@@ -247,7 +219,6 @@ class MovieViewModel: ObservableObject {
             }
             .decode(type: MovieDetailModel.self, decoder: JSONDecoder())
             .sink { completion in
-                
                 print("Completion: \(completion)")
             } receiveValue: { [weak self] returnedMovie in
                 print("상세정보")
