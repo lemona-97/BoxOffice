@@ -9,14 +9,14 @@ import SwiftUI
 
 struct MovieView: View {
     var movies : [MovieModel]
-    var movieImageURL : [String : String]
+    var movieImage : [String : UIImage]
     var movieDetails : [String : MovieDetailModel]
     var body: some View {
         ForEach(movies, id: \.movieCd) { movie in
-             ZStack {
+            ZStack {
                 Color.white
-                 HStack {
-                     VStack(spacing: 10, content: {
+                HStack {
+                    VStack(spacing: 10, content: {
                         HStack {
                             
                             Text(movie.rank)
@@ -50,7 +50,7 @@ struct MovieView: View {
                         HStack{
                             VStack(spacing: 20, content: {
                                 HStack(alignment: .center, content: {
-                                    Text("\(movie.movieNm)")
+                                    Text("\(movie.movieNm)") //영화명
                                         .fontWeight(.bold)
                                         .foregroundStyle(.black)
                                 })
@@ -72,34 +72,32 @@ struct MovieView: View {
                             
                         }
                     })
-                     .frame(maxWidth: .infinity)
-                     if self.movieImageURL.count == self.movies.count {
-                         if let urlString = self.movieImageURL[movie.movieNm] {
-                             if let url = URL(string: urlString) {
-                                 AsyncImage(url: url) { phase in
-                                     if let image = phase.image{
-                                         image.resizable()
-                                             .frame(width: 160, height: 200)
-                                             .clipped()
-                                             .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-                                     }
-                                 }
-                             }
-                         }
-                     }
-                 }
-                 if let movieDetail = movieDetails[movie.movieCd] {
-                     NavigationLink(destination:MovieDetailView(movieInfo: movie, movieImageURL: movieImageURL, movieDetail: movieDetail)) {
-                        Rectangle()
-                            .foregroundStyle(.clear)
-                            .clipped()
-                     }
-                 }
+                    .frame(maxWidth: .infinity)
+                    .layoutPriority(1.1)
+                    
+                    if self.movieImage.count == self.movies.count {
+                        if let image = self.movieImage[movie.movieNm] {
+                            Image(uiImage: image)
+                                .resizable()
+                                .frame(width: 160, height: 200)
+                                .clipped()
+                                .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                                .accessibilityLabel("영화 포스터 사진")
+                        }
+                    }
+                    if let movieDetail = movieDetails[movie.movieCd] {
+                        NavigationLink(destination:MovieDetailView(movieInfo: movie, movieImage: movieImage, movieDetail: movieDetail)) {
+                            Rectangle()
+                                .foregroundStyle(.clear)
+                                .clipped()
+                        }
+                    }
+                }
             }
+            .ignoresSafeArea()
         }
-        .ignoresSafeArea()
     }
 }
-#Preview {
-    ContentView()
-}
+    #Preview {
+        ContentView()
+    }

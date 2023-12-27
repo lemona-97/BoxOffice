@@ -65,11 +65,11 @@ extension MyWidgetAttributes {
 extension MyWidgetAttributes.ContentState {
     fileprivate static var smiley: MyWidgetAttributes.ContentState {
         MyWidgetAttributes.ContentState(emoji: "😀")
-     }
-     
-     fileprivate static var starEyes: MyWidgetAttributes.ContentState {
-         MyWidgetAttributes.ContentState(emoji: "🤩")
-     }
+    }
+    
+    fileprivate static var starEyes: MyWidgetAttributes.ContentState {
+        MyWidgetAttributes.ContentState(emoji: "🤩")
+    }
 }
 
 #Preview("Notification", as: .content, using: MyWidgetAttributes.preview) {

@@ -15,7 +15,7 @@ class MovieViewModel: ObservableObject {
     @Published var weeklyMovies: [MovieModel] = []
     @Published var weekendMovies: [MovieModel] = []
     @Published var movieDetails : [String : MovieDetailModel] = [:]
-    @Published var movieImagesURLs: [String : String] = [:]
+    @Published var movieImages: [String : UIImage] = [:]
     
     var today = Date()
     var cancellables = Set<AnyCancellable>()
@@ -29,7 +29,7 @@ class MovieViewModel: ObservableObject {
         self.weeklyMovies.removeAll()
         self.weekendMovies.removeAll()
         self.movieDetails.removeAll()
-        self.movieImagesURLs.removeAll()
+        self.movieImages.removeAll()
     }
     func getDailyBoxOffice() {
         clearInfo()
@@ -62,7 +62,7 @@ class MovieViewModel: ObservableObject {
                 Task {
                     for movie in self.dailyMovies {
                         do {
-                            try await self.getMoviePosters(movieName: movie.movieNm)
+                            try await self.getMoviePosters(rank: movie.rank, movieName: movie.movieNm)
                         } catch {
                             print("포스터 가져오기 에러 \(error)")
                         }
@@ -106,7 +106,7 @@ class MovieViewModel: ObservableObject {
                 Task {
                     for movie in self.weeklyMovies {
                         do {
-                            try await self.getMoviePosters(movieName: movie.movieNm)
+                            try await self.getMoviePosters(rank: movie.rank, movieName: movie.movieNm)
                         } catch {
                             print("포스터 가져오기 에러 \(error)")
                         }
@@ -148,7 +148,7 @@ class MovieViewModel: ObservableObject {
                 Task {
                     for movie in self.weekendMovies {
                         do {
-                            try await self.getMoviePosters(movieName: movie.movieNm)
+                            try await self.getMoviePosters(rank: movie.rank, movieName: movie.movieNm)
                             
                         } catch {
                             print("포스터 가져오기 에러 \(error)")
@@ -163,8 +163,13 @@ class MovieViewModel: ObservableObject {
         
     }
     
-    func getMoviePosters(movieName: String) async throws {
+    func getMoviePosters(rank : String, movieName: String) async throws {
         
+        if let image = ImageCacheManager.shared.object(forKey: movieName as NSString) as? UIImage { // 캐시에 있는 이미지 인지 확인
+            self.movieImages.updateValue(image, forKey: movieName) //있으면 캐시에서 불러옴
+            return
+        }
+                                                                            // 없으면 api호출
         guard let url = URL(string:"https://dapi.kakao.com/v2/search/image") else { return }
         let headers : HTTPHeaders = [
             "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
@@ -191,8 +196,16 @@ class MovieViewModel: ObservableObject {
                     print("2")
                     let json = try JSONDecoder().decode(MovieImageModel.self, from: jsonData)
                     print("3")
-                    self.movieImagesURLs.updateValue(json.documents.first!.image_url, forKey: movieName)
                     
+                    
+                    guard let url = URL(string: json.documents.first!.image_url) else { return }
+                    Task {
+                        let data = try Data(contentsOf: url)
+                        if let image = UIImage(data: data){
+                            self.movieImages.updateValue(image, forKey: movieName)
+                            ImageCacheManager.shared.setObject(image, forKey: movieName as NSString)
+                        }
+                    }
                 } catch (let error) {
                     print("catch error : \(error.localizedDescription)")
                 }

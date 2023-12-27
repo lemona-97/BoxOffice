@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MovieDetailView: View {
     @State var movieInfo : MovieModel
-    @State var movieImageURL : [String : String]
+    @State var movieImage : [String : UIImage]
     @State var movieDetail : MovieDetailModel
     @GestureState private var zoom = 1.0
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -26,23 +26,22 @@ struct MovieDetailView: View {
                     .frame(width:UIScreen.main.bounds.width + 10, height: 40)
                     .foregroundStyle(.clear)
             }
-            if let urlString = self.movieImageURL[movieInfo.movieNm] {
-                if let url = URL(string: urlString) {
-                    AsyncImage(url: url) { phase in
-                        if let image = phase.image{
-                            image.resizable()
-                                .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.width * 1.08)
-                                .padding(EdgeInsets(top: 0, leading: 20, bottom: 20, trailing: 20))
-                                .aspectRatio(contentMode: .fit)
-                                .clipped()
-                                .scaleEffect(zoom)
-                                .gesture(MagnifyGesture().updating($zoom, body: { value, GestureState, transaction in
-                                    GestureState = value.magnification
-                                }))
-                        }
-                    }
-                }
+            if let image = self.movieImage[movieInfo.movieNm] {
+                
+                Image(uiImage: image)
+                    .resizable()
+                    .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.width * 1.08)
+                    .padding(EdgeInsets(top: 0, leading: 20, bottom: 20, trailing: 20))
+                    .aspectRatio(contentMode: .fit)
+                    .clipped()
+                    .scaleEffect(zoom)
+                    .gesture(MagnifyGesture().updating($zoom, body: { value, GestureState, transaction in
+                        GestureState = value.magnification
+                    }))
+                
             }
+            
+            
             
             HStack(alignment: .center, content: {
                 Text("개봉일 : ")

@@ -44,6 +44,12 @@ struct MyWidgetEntryView : View {
     var body: some View {
         VStack {
             Text("오늘의 영화")
+            if let image = ImageCacheManager.shared.object(forKey: "widgetImage"){
+                Image(uiImage: image)
+            } else {
+                
+            }
+            
         }
     }
 }
