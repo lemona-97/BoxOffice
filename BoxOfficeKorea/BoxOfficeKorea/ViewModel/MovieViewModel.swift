@@ -145,6 +145,7 @@ class MovieViewModel: ObservableObject {
                 print(returnedMovie)
                 self?.weekendMovies = returnedMovie.boxOfficeResult.weeklyBoxOfficeList
                 guard let self = self else { return }
+                
                 Task {
                     for movie in self.weekendMovies {
                         do {
@@ -167,13 +168,14 @@ class MovieViewModel: ObservableObject {
         
         if let image = ImageCacheManager.shared.object(forKey: movieName as NSString) as? UIImage { // 캐시에 있는 이미지 인지 확인
             self.movieImages.updateValue(image, forKey: movieName) //있으면 캐시에서 불러옴
+            print("캐싱된 이미지를 불러옵니다")
             return
         }
                                                                             // 없으면 api호출
         guard let url = URL(string:"https://dapi.kakao.com/v2/search/image") else { return }
         let headers : HTTPHeaders = [
             "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
-            "Authorization": "\(KAKAO)",
+            "Authorization": "\(KAKAO_KEY)",
         ]
         let parameters : [String: Any] = [
             "query" : "\(movieName)",

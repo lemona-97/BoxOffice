@@ -10,7 +10,6 @@
 xcuserdata/
 BoxOfficeKorea/BoxOfficeKorea/Info.plist
 BoxOfficeKorea/BoxOfficeKorea/Base/Key.swift
-BoxOfficeKorea/BoxOfficeKorea/KAKAO/KAKAO.swift
 ## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
 *.xcscmblueprint
 *.xccheckout
