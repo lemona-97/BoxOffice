@@ -166,13 +166,13 @@ class MovieViewModel: ObservableObject {
     
     func getMoviePosters(rank : String, movieName: String) async throws {
         
-        if let image = ImageCacheManager.shared.object(forKey: movieName as NSString) as? UIImage { // 캐시에 있는 이미지 인지 확인
+        if let image = ImageCacheManager.shared.object(forKey: movieName as NSString) { // 캐시에 있는 이미지 인지 확인
             self.movieImages.updateValue(image, forKey: movieName) //있으면 캐시에서 불러옴
             print("캐싱된 이미지를 불러옵니다")
             return
         }
                                                                             // 없으면 api호출
-        guard let url = URL(string:"https://dapi.kakao.com/v2/search/image") else { return }
+        guard let url = URL(string:ApiMeta.KAKAO.PATH) else { return }
         let headers : HTTPHeaders = [
             "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
             "Authorization": "\(KAKAO_KEY)",
@@ -190,7 +190,7 @@ class MovieViewModel: ObservableObject {
         .responseJSON { response in
             switch response.result {
             case .success(let res):
-                let resultData = String(data: response.data!, encoding: .utf8)
+                let _ = String(data: response.data!, encoding: .utf8)
                 do {
                     // 반환값을 Data 타입으로 변환
                     print("1")

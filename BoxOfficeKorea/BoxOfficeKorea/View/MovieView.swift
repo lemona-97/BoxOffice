@@ -38,12 +38,12 @@ struct MovieView: View {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 8)
                                         .stroke(.cyan, lineWidth: 2)
-                                        .frame(width: 80, height: 30)
+                                        .frame(width: 50, height: 25)
                                         .foregroundStyle(.clear)
                                     Text("NEW")
                                         .font(.subheadline)
                                         .foregroundStyle(.green)
-                                }.padding(10)
+                                }
                             }
                             
                         }
